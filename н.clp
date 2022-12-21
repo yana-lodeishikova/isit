@@ -40,7 +40,7 @@
 )
 
 (defrule determine-purpose ""
-  (not (device ?))
+  (not (purpose ?))
   (not (result ?))
   =>
   (assert (purpose (ask-question
@@ -64,7 +64,7 @@
 ;;;**********************
 
 ;Определение подходящей конструкции, затычки или охватывающие
-(defrule determine-form-over-ear ""
+(defrule determine-form-in-ear ""
   (device phone)
   (not (form ?))
   (not (result ?))
@@ -178,7 +178,7 @@
 
 (defrule result-samsung ""
   (form in-ear)
-  (budget 1000)
+  (budget 10000)
   (not (result ?))
   =>
   (assert (result "Samsung Buds 2"))
@@ -245,7 +245,7 @@
   (form over-ear)
   (wireless yes)
   (microphone yes)
-  (budget 1000)
+  (budget 10000)
   (not (result ?))
   =>
   (assert (result "JBL Tune 710BT"))
