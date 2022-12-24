@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ExpertSystem;
 
@@ -25,12 +26,26 @@ class ConditionExpression : Condition
 
     public ExpressionType Type =>
         Operator == "AND" ? ExpressionType.And : ExpressionType.Or;
+
+    public override bool Evaluate(IEnumerable<Fact> facts) =>
+        Type == ExpressionType.And
+            ? Conditions.All(condition => condition.Evaluate(facts))
+            : Conditions.Any(condition => condition.Evaluate(facts));
 }
     
 class ValueCondition : Condition
 {
     public string FactName;
     public string? Value;
+
+    public override bool Evaluate(IEnumerable<Fact> facts)
+    {
+        var foundFact = facts.FirstOrDefault(fact => fact.Name == FactName);
+
+        return foundFact is null
+            ? Value is null
+            : Value == foundFact.Value;
+    }
 }
 
 class Fact
