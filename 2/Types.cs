@@ -16,7 +16,7 @@ struct Rule
 
 abstract class Condition
 {
-    public abstract bool Evaluate(IEnumerable<Fact> facts);
+    public abstract (bool CanActivate, List<Fact> Requirements) Evaluate(IEnumerable<Fact> facts);
 }
 
 class ConditionExpression : Condition
@@ -27,24 +27,38 @@ class ConditionExpression : Condition
     public ExpressionType Type =>
         Operator == "AND" ? ExpressionType.And : ExpressionType.Or;
 
-    public override bool Evaluate(IEnumerable<Fact> facts) =>
-        Type == ExpressionType.And
-            ? Conditions.All(condition => condition.Evaluate(facts))
-            : Conditions.Any(condition => condition.Evaluate(facts));
-}
+    public override (bool CanActivate, List<Fact> Requirements) Evaluate(IEnumerable<Fact> facts)
+    {
+        var results = Conditions.Select(condition => condition.Evaluate(facts));
+        if (Type == ExpressionType.And)
+        {
+            var requirements = results
+                .SelectMany(result => result.Requirements)
+                .ToList();
+            return (results.All(result => result.CanActivate), requirements);
+        }
     
+        foreach (var result in results)
+        {
+            if (result.CanActivate) return result;
+        }
+    
+        return (false, new());
+    }
+}
+
 class ValueCondition : Condition
 {
     public string FactName;
     public string? Value;
 
-    public override bool Evaluate(IEnumerable<Fact> facts)
+    public override (bool CanActivate, List<Fact> Requirements) Evaluate(IEnumerable<Fact> facts)
     {
         var foundFact = facts.FirstOrDefault(fact => fact.Name == FactName);
 
         return foundFact is null
-            ? Value is null
-            : Value == foundFact.Value;
+            ? (Value is null, new List<Fact>() )
+            : (Value == foundFact.Value, new List<Fact> { foundFact } );
     }
 }
 
