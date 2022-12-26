@@ -1,0 +1,572 @@
+﻿[
+  {
+    "Condition": { "FactName":  "device" },
+    "Fact": {
+      "Name": "device",
+      "Input": {
+        "Question": "К какому устройству вы будете подключать наушники?",
+        "Values": [
+          "Телефон",
+          "Компьютер",
+          "ТВ"
+        ]
+      }
+    }
+  },
+
+  {
+    "Condition": { "FactName":  "purpose" },
+    "Fact": {
+      "Name": "purpose",
+      "Input": {
+        "Question": "Для чего чаще всего будут использоваться наушники?",
+        "Values": [
+          "Звонки",
+          "Игры",
+          "Видео",
+          "Музыка"
+        ]
+      }
+    }
+  },
+
+  {
+    "Condition": { "FactName":  "budget" },
+    "Fact": {
+      "Name": "budget",
+      "Input": {
+        "Question": "Какой у вас бюджет?",
+        "Values": [
+          "1000",
+          "5000",
+          "10000"
+        ]
+      }
+    }
+  },
+
+
+
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        { "FactName":  "form" },
+        {
+          "FactName": "device",
+          "Value": "Телефон"
+        }
+      ]
+    },
+    "Fact": {
+      "Name": "form",
+      "Value": "Затычки"
+    }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        { "FactName":  "form" },
+        {
+          "Operator": "OR",
+          "Conditions": [
+            {
+              "FactName": "device",
+              "Value": "Компьютер"
+            },
+            {
+              "FactName": "device",
+              "Value": "ТВ"
+            }
+          ]
+        }
+      ]
+    },
+    "Fact": {
+      "Name": "form",
+      "Value": "Охватывающие"
+    }
+  },
+
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        { "FactName":  "wireless" },
+        {
+          "Operator": "OR",
+          "Conditions": [
+            {
+              "FactName": "device",
+              "Value": "ТВ"
+            },
+            {
+              "Operator": "AND",
+              "Conditions": [
+                {
+                  "FactName": "device",
+                  "Value": "Телефон"
+                },
+                {
+                  "Operator": "OR",
+                  "Conditions": [
+                    {
+                      "FactName": "purpose",
+                      "Value": "Звонки"
+                    },
+                    {
+                      "FactName": "purpose",
+                      "Value": "Музыка"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Operator": "AND",
+              "Conditions": [
+                {
+                  "FactName": "device",
+                  "Value": "Компьютер"
+                },
+                {
+                  "Operator": "OR",
+                  "Conditions": [
+                    {
+                      "FactName": "purpose",
+                      "Value": "Игры"
+                    },
+                    {
+                      "FactName": "purpose",
+                      "Value": "Видео"
+                    },
+                    {
+                      "FactName": "purpose",
+                      "Value": "Музыка"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Fact": {
+      "Name": "wireless",
+      "Value": "Да"
+    }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        { "FactName":  "wireless" },
+        {
+          "Operator": "OR",
+          "Conditions": [
+            {
+              "Operator": "AND",
+              "Conditions": [
+                {
+                  "FactName": "device",
+                  "Value": "Телефон"
+                },
+                {
+                  "Operator": "OR",
+                  "Conditions": [
+                    {
+                      "FactName": "purpose",
+                      "Value": "Игры"
+                    },
+                    {
+                      "FactName": "purpose",
+                      "Value": "Видео"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "Operator": "AND",
+              "Conditions": [
+                {
+                  "FactName": "device",
+                  "Value": "Компьютер"
+                },
+                {
+                  "FactName": "purpose",
+                  "Value": "Звонки"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "Fact": {
+      "Name": "wireless",
+      "Value": "Нет"
+    }
+  },
+
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        { "FactName":  "microphone" },
+        {
+          "Operator": "OR",
+          "Conditions": [
+            {
+              "FactName": "purpose",
+              "Value": "Звонки"
+            },
+            {
+              "FactName": "purpose",
+              "Value": "Игры"
+            }
+          ]
+        }
+      ]
+    },
+    "Fact": {
+      "Name": "microphone",
+      "Value": "Да"
+    }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        { "FactName":  "microphone" },
+        {
+          "Operator": "OR",
+          "Conditions": [
+            {
+              "FactName": "purpose",
+              "Value": "Видео"
+            },
+            {
+              "FactName": "purpose",
+              "Value": "Музыка"
+            }
+          ]
+        }
+      ]
+    },
+    "Fact": {
+      "Name": "microphone",
+      "Value": "Нет"
+    }
+  },
+
+
+
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Затычки"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "1000"
+        }
+      ]
+    },
+    "Fact": { "Name": "CADENA YH-12" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Затычки"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "budget",
+          "Value": "1000"
+        }
+      ]
+    },
+    "Fact": { "Name": "JVC HA-FX38" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Затычки"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "1000"
+        }
+      ]
+    },
+    "Fact": { "Name": "QCY T1c" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Затычки"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "budget",
+          "Value": "5000"
+        }
+      ]
+    },
+    "Fact": { "Name": "Sennheiser CX 300S" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Затычки"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "5000"
+        }
+      ]
+    },
+    "Fact": { "Name": "JBL Wave 200TWS" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Затычки"
+        },
+        {
+          "FactName": "budget",
+          "Value": "10000"
+        }
+      ]
+    },
+    "Fact": { "Name": "Samsung Buds 2" }
+  },
+
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "budget",
+          "Value": "1000"
+        }
+      ]
+    },
+    "Fact": { "Name": "A4Tech HS-200" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "1000"
+        }
+      ]
+    },
+    "Fact": { "Name": "Harper HB-210" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "budget",
+          "Value": "5000"
+        }
+      ]
+    },
+    "Fact": { "Name": "Soundcore Life 2 Neo Q10i" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "5000"
+        }
+      ]
+    },
+    "Fact": { "Name": "SVEN AP-B900MV" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "5000"
+        }
+      ]
+    },
+    "Fact": { "Name": "SteelSeries Arctis 1" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "10000"
+        }
+      ]
+    },
+    "Fact": { "Name": "HyperX Cloud Alpha S HX-HSCAS" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Да"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Да"
+        },
+        {
+          "FactName": "budget",
+          "Value": "10000"
+        }
+      ]
+    },
+    "Fact": { "Name": "JBL Tune 710BT" }
+  },
+  {
+    "Condition": {
+      "Operator": "AND",
+      "Conditions": [
+        {
+          "FactName": "form",
+          "Value": "Охватывающие"
+        },
+        {
+          "FactName": "wireless",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "microphone",
+          "Value": "Нет"
+        },
+        {
+          "FactName": "budget",
+          "Value": "10000"
+        }
+      ]
+    },
+    "Fact": { "Name": "Fostex T20RP MK3" }
+  }
+]
