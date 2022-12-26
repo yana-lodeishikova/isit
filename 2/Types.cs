@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace ExpertSystem;
@@ -12,6 +13,8 @@ struct Rule
 {
     public Condition Condition;
     public Fact Fact;
+
+    public override string ToString() => $"({Condition} ==> {Fact})";
 }
 
 abstract class Condition
@@ -45,6 +48,8 @@ class ConditionExpression : Condition
     
         return (false, new());
     }
+
+    public override string ToString() => $"({String.Join<Condition>(Type == ExpressionType.And ? " AND " : " OR ", Conditions)})";
 }
 
 class ValueCondition : Condition
@@ -60,6 +65,11 @@ class ValueCondition : Condition
             ? (Value is null, new List<Fact>() )
             : (Value == foundFact.Value, new List<Fact> { foundFact } );
     }
+
+    public override string ToString() => 
+        Value is null
+            ? $"Не определено '{FactName}'"
+            : $"'{FactName} = {Value}'";
 }
 
 class Fact
@@ -69,10 +79,25 @@ class Fact
     public Input? Input;
 
     public bool IsResult => Value == null && Input == null;
+
+    public override string ToString()
+    {
+        string value = $"'{Name}'";
+        if (Value != null) value += $" = {Value}";
+        if (Input != null) value += $" (Вопрос: {Input})";
+        return value;
+    }
 }
 
 struct Input
 {
     public string Question;
     public string[] Values;
+
+    public override string ToString()
+    {
+        string value = $"'{Question}'";
+        if (Values != null) value += $" ({string.Join("/", Values)})";
+        return value;
+    }
 }
