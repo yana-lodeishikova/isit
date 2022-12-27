@@ -11,6 +11,7 @@ var rules = JsonSerializer.Deserialize<Rule[]>(jsonString, options);
 
 var memory = new MemoryComponent(rules);
 var inferenceComponent = new InferenceComponent(memory);
+var explanationComponent = new ExplanationComponent(memory);
 
 var result = inferenceComponent.GetResult();
 
@@ -18,6 +19,7 @@ if (result is Fact resultFact)
 {
     Console.WriteLine($"Результат:\n{resultFact.Name}");
     Console.ReadKey();
+    explanationComponent.GetReasoning(resultFact);
 }
 else
 {

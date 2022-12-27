@@ -49,7 +49,7 @@ class ConditionExpression : Condition
         return (false, new());
     }
 
-    public override string ToString() => $"({String.Join<Condition>(Type == ExpressionType.And ? " AND " : " OR ", Conditions)})";
+    public override string ToString() => $"({String.Join<Condition>(Type == ExpressionType.And ? " И " : " ИЛИ ", Conditions)})";
 }
 
 class ValueCondition : Condition
