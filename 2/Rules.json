@@ -1,8 +1,8 @@
 ﻿[
   {
-    "Condition": { "FactName":  "device" },
+    "Condition": { "FactName":  "Устройство" },
     "Fact": {
-      "Name": "device",
+      "Name": "Устройство",
       "Input": {
         "Question": "К какому устройству вы будете подключать наушники?",
         "Values": [
@@ -15,9 +15,9 @@
   },
 
   {
-    "Condition": { "FactName":  "purpose" },
+    "Condition": { "FactName":  "Назначение" },
     "Fact": {
-      "Name": "purpose",
+      "Name": "Назначение",
       "Input": {
         "Question": "Для чего чаще всего будут использоваться наушники?",
         "Values": [
@@ -31,9 +31,9 @@
   },
 
   {
-    "Condition": { "FactName":  "budget" },
+    "Condition": { "FactName":  "Бюджет" },
     "Fact": {
-      "Name": "budget",
+      "Name": "Бюджет",
       "Input": {
         "Question": "Какой у вас бюджет?",
         "Values": [
@@ -51,15 +51,15 @@
     "Condition": {
       "Operator": "AND",
       "Conditions": [
-        { "FactName":  "form" },
+        { "FactName":  "Вид" },
         {
-          "FactName": "device",
+          "FactName": "Устройство",
           "Value": "Телефон"
         }
       ]
     },
     "Fact": {
-      "Name": "form",
+      "Name": "Вид",
       "Value": "Затычки"
     }
   },
@@ -67,16 +67,16 @@
     "Condition": {
       "Operator": "AND",
       "Conditions": [
-        { "FactName":  "form" },
+        { "FactName":  "Вид" },
         {
           "Operator": "OR",
           "Conditions": [
             {
-              "FactName": "device",
+              "FactName": "Устройство",
               "Value": "Компьютер"
             },
             {
-              "FactName": "device",
+              "FactName": "Устройство",
               "Value": "ТВ"
             }
           ]
@@ -84,7 +84,7 @@
       ]
     },
     "Fact": {
-      "Name": "form",
+      "Name": "Вид",
       "Value": "Охватывающие"
     }
   },
@@ -93,30 +93,30 @@
     "Condition": {
       "Operator": "AND",
       "Conditions": [
-        { "FactName":  "wireless" },
+        { "FactName":  "Беспроводные" },
         {
           "Operator": "OR",
           "Conditions": [
             {
-              "FactName": "device",
+              "FactName": "Устройство",
               "Value": "ТВ"
             },
             {
               "Operator": "AND",
               "Conditions": [
                 {
-                  "FactName": "device",
+                  "FactName": "Устройство",
                   "Value": "Телефон"
                 },
                 {
                   "Operator": "OR",
                   "Conditions": [
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Звонки"
                     },
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Музыка"
                     }
                   ]
@@ -127,22 +127,22 @@
               "Operator": "AND",
               "Conditions": [
                 {
-                  "FactName": "device",
+                  "FactName": "Устройство",
                   "Value": "Компьютер"
                 },
                 {
                   "Operator": "OR",
                   "Conditions": [
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Игры"
                     },
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Видео"
                     },
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Музыка"
                     }
                   ]
@@ -154,7 +154,7 @@
       ]
     },
     "Fact": {
-      "Name": "wireless",
+      "Name": "Беспроводные",
       "Value": "Да"
     }
   },
@@ -162,7 +162,7 @@
     "Condition": {
       "Operator": "AND",
       "Conditions": [
-        { "FactName":  "wireless" },
+        { "FactName":  "Беспроводные" },
         {
           "Operator": "OR",
           "Conditions": [
@@ -170,18 +170,18 @@
               "Operator": "AND",
               "Conditions": [
                 {
-                  "FactName": "device",
+                  "FactName": "Устройство",
                   "Value": "Телефон"
                 },
                 {
                   "Operator": "OR",
                   "Conditions": [
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Игры"
                     },
                     {
-                      "FactName": "purpose",
+                      "FactName": "Назначение",
                       "Value": "Видео"
                     }
                   ]
@@ -192,11 +192,11 @@
               "Operator": "AND",
               "Conditions": [
                 {
-                  "FactName": "device",
+                  "FactName": "Устройство",
                   "Value": "Компьютер"
                 },
                 {
-                  "FactName": "purpose",
+                  "FactName": "Назначение",
                   "Value": "Звонки"
                 }
               ]
@@ -206,7 +206,7 @@
       ]
     },
     "Fact": {
-      "Name": "wireless",
+      "Name": "Беспроводные",
       "Value": "Нет"
     }
   },
@@ -215,16 +215,16 @@
     "Condition": {
       "Operator": "AND",
       "Conditions": [
-        { "FactName":  "microphone" },
+        { "FactName":  "Микрофон" },
         {
           "Operator": "OR",
           "Conditions": [
             {
-              "FactName": "purpose",
+              "FactName": "Назначение",
               "Value": "Звонки"
             },
             {
-              "FactName": "purpose",
+              "FactName": "Назначение",
               "Value": "Игры"
             }
           ]
@@ -232,7 +232,7 @@
       ]
     },
     "Fact": {
-      "Name": "microphone",
+      "Name": "Микрофон",
       "Value": "Да"
     }
   },
@@ -240,16 +240,16 @@
     "Condition": {
       "Operator": "AND",
       "Conditions": [
-        { "FactName":  "microphone" },
+        { "FactName":  "Микрофон" },
         {
           "Operator": "OR",
           "Conditions": [
             {
-              "FactName": "purpose",
+              "FactName": "Назначение",
               "Value": "Видео"
             },
             {
-              "FactName": "purpose",
+              "FactName": "Назначение",
               "Value": "Музыка"
             }
           ]
@@ -257,7 +257,7 @@
       ]
     },
     "Fact": {
-      "Name": "microphone",
+      "Name": "Микрофон",
       "Value": "Нет"
     }
   },
@@ -269,19 +269,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Затычки"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Нет"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "1000"
         }
       ]
@@ -293,19 +293,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Затычки"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Нет"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Нет"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "1000"
         }
       ]
@@ -317,15 +317,15 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Затычки"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "1000"
         }
       ]
@@ -337,15 +337,15 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Затычки"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Нет"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "5000"
         }
       ]
@@ -357,15 +357,15 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Затычки"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "5000"
         }
       ]
@@ -377,11 +377,11 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Затычки"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "10000"
         }
       ]
@@ -394,15 +394,15 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Нет"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "1000"
         }
       ]
@@ -414,15 +414,15 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "1000"
         }
       ]
@@ -434,19 +434,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Да"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Нет"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "5000"
         }
       ]
@@ -458,19 +458,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Да"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "5000"
         }
       ]
@@ -482,15 +482,15 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
-          "Value": "Да"
+          "FactName": "Беспроводные",
+          "Value": "Нет"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "5000"
         }
       ]
@@ -502,19 +502,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Нет"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "10000"
         }
       ]
@@ -526,19 +526,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Да"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Да"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "10000"
         }
       ]
@@ -550,19 +550,19 @@
       "Operator": "AND",
       "Conditions": [
         {
-          "FactName": "form",
+          "FactName": "Вид",
           "Value": "Охватывающие"
         },
         {
-          "FactName": "wireless",
+          "FactName": "Беспроводные",
           "Value": "Нет"
         },
         {
-          "FactName": "microphone",
+          "FactName": "Микрофон",
           "Value": "Нет"
         },
         {
-          "FactName": "budget",
+          "FactName": "Бюджет",
           "Value": "10000"
         }
       ]
