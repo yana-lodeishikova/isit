@@ -13,6 +13,9 @@ class InferenceComponent
         Memory = memory;
     }
 
+    // Алгоритм вывода выбирает одно из правил, готовых к активации (условия которых выполнены),
+    // добавляет правую часть этого правила к списку действующих фактов
+    // если добавленный факт является результатом - завершает работу.
     public Fact? GetResult()
     {
         UpdateAgenda();
@@ -32,6 +35,8 @@ class InferenceComponent
         return null;
     }
 
+    // Алгоритм разрешения конфликтов
+    // Правила отсортированы по порядку выполнения их условия (сначала самые новые)
     private Dictionary<Rule, List<Fact>> GetOrderedAgenda() =>
         Memory.Agenda
             .Select((rule, i) => new
@@ -67,6 +72,8 @@ class InferenceComponent
         }
     }
 
+    // Принимает введенное пользователем значение, валидирует
+    // и при необходимости задает вопрос повторно.
     public static string AskQuestion(string question, string[] inputValues)
     {
         Console.WriteLine(question);

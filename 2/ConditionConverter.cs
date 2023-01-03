@@ -4,6 +4,7 @@ using System.Text.Json.Serialization;
 
 namespace ExpertSystem;
 
+// JSON-конвертер условий. Нужен для правильного чтения подтипов Condition
 internal class ConditionConverter : JsonConverter<Condition>
 {
     public override bool CanConvert(Type typeToConvert) => typeof(Condition).IsAssignableFrom(typeToConvert);

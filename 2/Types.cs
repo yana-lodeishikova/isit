@@ -4,11 +4,14 @@ using System.Linq;
 
 namespace ExpertSystem;
 
+// Конъюнкция и дизъюнкция
 enum ExpressionType
 {
     And, Or,
 }
 
+// Правило состоит из условия, при котором правило активируется (левая часть правила),
+// и факта, который добавляется в базу после активации правила (правая часть)
 struct Rule
 {
     public Condition Condition;
@@ -17,11 +20,16 @@ struct Rule
     public override string ToString() => $"({Condition} ==> {Fact})";
 }
 
+// Условие может быть либо простым условием сравнения факта со значением,
+// либо конъюнкцией/дизъюнкцией набора других условий
 abstract class Condition
 {
+    // Выполняется ли условие при наличии данного набора фактов
+    // В том числе возвращает список конкретных фактов, которых достаточно для выполнения условия
     public abstract (bool CanActivate, List<Fact> Requirements) Evaluate(IEnumerable<Fact> facts);
 }
 
+// Конъюнкция или дизъюнкция набора условий
 class ConditionExpression : Condition
 {
     public string Operator;
@@ -52,6 +60,7 @@ class ConditionExpression : Condition
     public override string ToString() => $"({String.Join<Condition>(Type == ExpressionType.And ? " И " : " ИЛИ ", Conditions)})";
 }
 
+// Проверка, определен или не определен факт с заданным именем, или сравнение факта с заданным значением
 class ValueCondition : Condition
 {
     public string FactName;
@@ -61,6 +70,8 @@ class ValueCondition : Condition
     {
         var foundFact = facts.FirstOrDefault(fact => fact.Name == FactName);
 
+        // Условие выполняется, если факт с заданным именем не найден и условие - "Факт не определен",
+        // либо значение факта равно значению условия
         return foundFact is null
             ? (Value is null, new List<Fact>() )
             : (Value == foundFact.Value, new List<Fact> { foundFact } );
@@ -72,6 +83,8 @@ class ValueCondition : Condition
             : $"'{FactName} = {Value}'";
 }
 
+// Факт может иметь определенное значение, его значение может определяться вопросом к пользователю,
+// либо (при отсутствии значения и вопроса) факт является искомым результатом
 class Fact
 {
     public string Name;
@@ -89,6 +102,7 @@ class Fact
     }
 }
 
+// Вопрос к пользователю с выбором одного из предложенных значений
 struct Input
 {
     public string Question;

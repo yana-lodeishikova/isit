@@ -13,6 +13,8 @@ class ExplanationComponent
         Memory = memory;
     }
 
+    // Алгоритм объяснения последовательно перебирает факты, определяет правило, из которого получен данный факт,
+    // и факты, наличие которых привело к активации правила.
     public void GetReasoning(Fact resultFact)
     {
         Stack<Fact> stack = new();
