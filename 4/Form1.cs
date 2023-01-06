@@ -89,5 +89,15 @@ namespace CollectiveDecision
                 }
             }
         }
+
+        // При нажатии на кнопку подсчета в текстовое поле выводится результат
+        // коллективного решения, полученный при помощи выбранной модели
+        // (либо ошибки, возникшие при ее работе)
+        private void buttonPlurality_Click(object sender, EventArgs e)
+        {
+            string[] values = VoteOrderControls.Select(controls => (string) controls.ComboBoxes[0].SelectedItem).ToArray();
+            var system = new PluralitySystem(values);
+            textBox.Lines = system.GetDecision().Split('\n');
+        }
     }
 }

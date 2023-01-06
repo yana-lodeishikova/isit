@@ -122,6 +122,7 @@
             this.buttonPlurality.TabIndex = 3;
             this.buttonPlurality.Text = "Большинство";
             this.buttonPlurality.UseVisualStyleBackColor = true;
+            this.buttonPlurality.Click += new System.EventHandler(this.buttonPlurality_Click);
             // 
             // panel
             // 
