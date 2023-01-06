@@ -60,6 +60,7 @@
             this.buttonAddVotes.TabIndex = 1;
             this.buttonAddVotes.Text = "Добавить";
             this.buttonAddVotes.UseVisualStyleBackColor = true;
+            this.buttonAddVotes.Click += new System.EventHandler(this.buttonAddVotes_Click);
             // 
             // buttonRemoveVotes
             // 
@@ -70,6 +71,7 @@
             this.buttonRemoveVotes.TabIndex = 2;
             this.buttonRemoveVotes.Text = "Удалить";
             this.buttonRemoveVotes.UseVisualStyleBackColor = true;
+            this.buttonRemoveVotes.Click += new System.EventHandler(this.buttonRemoveVotes_Click);
             // 
             // buttonBorda
             // 
