@@ -99,5 +99,16 @@ namespace CollectiveDecision
             var system = new PluralitySystem(values);
             textBox.Lines = system.GetDecision().Split('\n');
         }
+
+        private void buttonCondorcet_Click(object sender, EventArgs e)
+        {
+            var voteOrders = VoteOrderControls.Select(
+                controls => controls.ComboBoxes.Select(
+                    comboBox => (string)comboBox.SelectedItem
+                ).ToArray()
+            ).ToArray();
+            var system = new CondorcetSystem(voteOrders);
+            textBox.Lines = system.GetDecision().Split('\n');
+        }
     }
 }

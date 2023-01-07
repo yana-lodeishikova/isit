@@ -112,6 +112,7 @@
             this.buttonCondorcet.TabIndex = 3;
             this.buttonCondorcet.Text = "Кондорсе";
             this.buttonCondorcet.UseVisualStyleBackColor = true;
+            this.buttonCondorcet.Click += new System.EventHandler(this.buttonCondorcet_Click);
             // 
             // buttonPlurality
             // 
