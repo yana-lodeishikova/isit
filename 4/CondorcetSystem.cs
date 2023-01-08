@@ -6,7 +6,7 @@ namespace CollectiveDecision
     // Система принятия коллективного решения по модели Кондорсе
     public class CondorcetSystem : VoteOrderSystem
     {
-        private Dictionary<string, Dictionary<string, int>> CandidatePairValues;
+        protected Dictionary<string, Dictionary<string, int>> CandidatePairValues;
         
         public CondorcetSystem(IEnumerable<IEnumerable<string>> voteOrders) : base(voteOrders)
         {
@@ -73,7 +73,7 @@ namespace CollectiveDecision
                 string.Join("\n", Candidates.Select(GetMatrixLine));
         }
 
-        private string GetMatrixLine(string firstCandidate)
+        protected virtual string GetMatrixLine(string firstCandidate)
         {
             return $"{firstCandidate,30}  " +
                 string.Join(" ", Candidates.Select(secondCandidate => GetMatrixPairValue(firstCandidate, secondCandidate)));
@@ -88,6 +88,6 @@ namespace CollectiveDecision
         }
 
         // Условие победы: кандидат оказывается предпочтительнее любого другого кандидата в большинстве случаев
-        private bool Wins(string candidate) => CandidatePairValues[candidate].All(pairDifference => pairDifference.Value > 0);
+        protected virtual bool Wins(string candidate) => CandidatePairValues[candidate].All(pairDifference => pairDifference.Value > 0);
     }
 }

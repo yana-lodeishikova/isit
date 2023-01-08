@@ -102,13 +102,21 @@ namespace CollectiveDecision
 
         private void buttonCondorcet_Click(object sender, EventArgs e)
         {
-            var voteOrders = VoteOrderControls.Select(
+            var system = new CondorcetSystem(VoteOrders);
+            textBox.Lines = system.GetDecision().Split('\n');
+        }
+
+        private void buttonCopeland_Click(object sender, EventArgs e)
+        {
+            var system = new CopelandSystem(VoteOrders);
+            textBox.Lines = system.GetDecision().Split('\n');
+        }
+
+        private string[][] VoteOrders =>
+            VoteOrderControls.Select(
                 controls => controls.ComboBoxes.Select(
                     comboBox => (string)comboBox.SelectedItem
                 ).ToArray()
             ).ToArray();
-            var system = new CondorcetSystem(voteOrders);
-            textBox.Lines = system.GetDecision().Split('\n');
-        }
     }
 }

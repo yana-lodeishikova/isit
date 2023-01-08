@@ -102,6 +102,7 @@
             this.buttonCopeland.TabIndex = 3;
             this.buttonCopeland.Text = "Копленд";
             this.buttonCopeland.UseVisualStyleBackColor = true;
+            this.buttonCopeland.Click += new System.EventHandler(this.buttonCopeland_Click);
             // 
             // buttonCondorcet
             // 
