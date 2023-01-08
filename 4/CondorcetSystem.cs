@@ -29,14 +29,14 @@ namespace CollectiveDecision
                 );
         }
 
-        private int GetPairValue(string first, string second) 
+        protected virtual int GetPairValue(string first, string second) 
         {
             var (timesFirstHigher, timesSecondHigher) = GetPairDifference(first, second);
             return timesFirstHigher - timesSecondHigher;
         }
 
         // Вычисление количества случаев, когда первый кандидат оказывается предпочтительнее второго, и наоборот
-        private (int timesFirstHigher, int timesSecondHigher) GetPairDifference(string first, string second)
+        protected (int timesFirstHigher, int timesSecondHigher) GetPairDifference(string first, string second)
         {
             int timesFirstHigher = 0;
             int timesSecondHigher = 0;

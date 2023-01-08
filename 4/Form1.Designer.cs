@@ -92,6 +92,7 @@
             this.buttonSimpson.TabIndex = 3;
             this.buttonSimpson.Text = "Симпсон";
             this.buttonSimpson.UseVisualStyleBackColor = true;
+            this.buttonSimpson.Click += new System.EventHandler(this.buttonSimpson_Click);
             // 
             // buttonCopeland
             // 

@@ -112,6 +112,12 @@ namespace CollectiveDecision
             textBox.Lines = system.GetDecision().Split('\n');
         }
 
+        private void buttonSimpson_Click(object sender, EventArgs e)
+        {
+            var system = new SimpsonSystem(VoteOrders);
+            textBox.Lines = system.GetDecision().Split('\n');
+        }
+
         private string[][] VoteOrders =>
             VoteOrderControls.Select(
                 controls => controls.ComboBoxes.Select(
