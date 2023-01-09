@@ -118,6 +118,12 @@ namespace CollectiveDecision
             textBox.Lines = system.GetDecision().Split('\n');
         }
 
+        private void buttonBorda_Click(object sender, EventArgs e)
+        {
+            var system = new BordaSystem(VoteOrders);
+            textBox.Lines = system.GetDecision().Split('\n');
+        }
+
         private string[][] VoteOrders =>
             VoteOrderControls.Select(
                 controls => controls.ComboBoxes.Select(

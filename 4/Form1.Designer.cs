@@ -82,6 +82,7 @@
             this.buttonBorda.TabIndex = 3;
             this.buttonBorda.Text = "Борда";
             this.buttonBorda.UseVisualStyleBackColor = true;
+            this.buttonBorda.Click += new System.EventHandler(this.buttonBorda_Click);
             // 
             // buttonSimpson
             // 
