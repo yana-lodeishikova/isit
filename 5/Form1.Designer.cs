@@ -58,6 +58,8 @@
             this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Draw);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_Draw);
             // 
             // buttonClear
             // 
@@ -68,6 +70,7 @@
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Очистить";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // buttonSave
             // 
@@ -78,6 +81,7 @@
             this.buttonSave.TabIndex = 1;
             this.buttonSave.Text = "Сохранить";
             this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
             // buttonTest
             // 
