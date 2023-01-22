@@ -101,10 +101,12 @@ namespace NeuralNetwork
             // 10 "эпох" повторения циклов обучения сети
             for (int i = 0; i < 10; i++)
             {
+                Console.WriteLine($"Обучение сети, эпоха №{i + 1}");
                 // Перебор всех изображений-примеров для всех распознаваемых символов
                 for (var j = 0; j < SymbolExampleImages.Count; j++)
                 {
                     var symbol = SymbolExampleImages.Keys.ElementAt(j);
+                    Console.WriteLine($"Символ {symbol}");
                     foreach (var image in SymbolExampleImages[symbol])
                     {
                         var inputs = ConvertImageToNetworkInputs(image);
