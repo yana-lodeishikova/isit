@@ -92,6 +92,7 @@
             this.buttonTest.TabIndex = 1;
             this.buttonTest.Text = "Распознать";
             this.buttonTest.UseVisualStyleBackColor = true;
+            this.buttonTest.Click += new System.EventHandler(this.buttonTest_Click);
             // 
             // labelResult
             // 
@@ -111,6 +112,7 @@
             this.buttonTrain.TabIndex = 1;
             this.buttonTrain.Text = "Обучить";
             this.buttonTrain.UseVisualStyleBackColor = true;
+            this.buttonTrain.Click += new System.EventHandler(this.buttonTrain_Click);
             // 
             // button1
             // 
